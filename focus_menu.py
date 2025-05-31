@@ -1,5 +1,3 @@
-from main import option_menu 
-
 focus_name = []
 
 def focus_menu():
@@ -47,7 +45,8 @@ def focus_menu():
         return focus_menu()
 
     elif option_focus == 4:
-        return option_menu()  # agora chama o menu corretamente
+        from menu import option_menu
+        return option_menu()
 
     elif option_focus == 9:
         print("Goodbye!")
