@@ -1,7 +1,7 @@
 def start_menu():
     option_start = int(input(""
-"   1: Start\n"
-"   2: Focus Settings\n"
-"   3: Exit\n"
+"   1: Select Focus\n"
+"   2: Back to Menu\n"
+"   9: Exit\n"
 "   \nSelect one option: "
     ))
