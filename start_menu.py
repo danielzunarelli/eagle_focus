@@ -1,6 +1,5 @@
 from db import get_all_focus
 from focus_timer import start_focus_timer
-from menu import option_menu
 
 def start_menu():
     option_start = int(input(
@@ -31,7 +30,8 @@ def start_menu():
         return start_menu()
 
     elif option_start == 2:
+        from menu import option_menu 
         return option_menu()
-    
+
     elif option_start == 9:
         print("Goodbye!")

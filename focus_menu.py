@@ -1,5 +1,4 @@
 from db import insert_focus, get_all_focus, delete_focus_by_id
-from menu import option_menu
 
 def focus_menu():
     print("\nFocus Menu\n")
@@ -45,6 +44,7 @@ def focus_menu():
         return focus_menu()
 
     elif option_focus == 4:
+        from menu import option_menu 
         return option_menu()
 
     elif option_focus == 9:
