@@ -1,5 +1,6 @@
-from focus_menu import focus_name
-from focus_timer import start_focus_timer  # você precisa criar esse arquivo separadamente
+from db import get_all_focus
+from focus_timer import start_focus_timer
+from menu import option_menu
 
 def start_menu():
     option_start = int(input(
@@ -10,18 +11,19 @@ def start_menu():
     ))
 
     if option_start == 1:
-        print("\nList of Focus:")
-        if focus_name:
-            for i, focus in enumerate(focus_name, 1):
-                print(f"{i}. {focus}")
+        focus_list = get_all_focus()
+        if focus_list:
+            print("\nList of Focus:")
+            for f in focus_list:
+                print(f"{f[0]}. {f[1]}")
             try:
-                select_focus = int(input("\nEnter the number of the Focus to start: ")) - 1
-                if 0 <= select_focus < len(focus_name):
-                    selected = focus_name[select_focus]
+                selected_id = int(input("\nEnter the number of the Focus to start: "))
+                selected = next((f[1] for f in focus_list if f[0] == selected_id), None)
+                if selected:
                     print(f"\nYou selected: {selected}")
-                    start_focus_timer(selected) 
+                    start_focus_timer(selected)
                 else:
-                    print("Invalid selection. Please try again.")
+                    print("Invalid selection.")
             except ValueError:
                 print("Please enter a valid number.")
         else:
@@ -29,8 +31,7 @@ def start_menu():
         return start_menu()
 
     elif option_start == 2:
-        from menu import option_menu
         return option_menu()
-
+    
     elif option_start == 9:
         print("Goodbye!")
