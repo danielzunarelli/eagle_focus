@@ -3,11 +3,13 @@ from focus_timer import start_focus_timer
 import time
 
 def start_menu():
+    print("\n===========  START MENU ===========")
     option_start = int(input(
         "   1: Select Focus\n"
         "   2: Back to Menu\n"
         "   9: Exit\n"
-        "\nSelect one option: "
+        "====================================\n"
+        "Select one option: "
     ))
 
     if option_start == 1:

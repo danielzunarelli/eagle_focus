@@ -4,14 +4,16 @@ import time
 def focus_menu():
     from menu import option_menu
 
-    print("\nFocus Menu\n")
+def focus_menu():
+    print("\n===========  FOCUS MENU ===========")
     option_focus = int(input(
         "   1: Register a new Focus\n"
         "   2: List Focus\n"
         "   3: Delete Focus\n"
         "   4: Back to Menu\n"
         "   9: Exit\n"
-        "\nSelect one option: "
+        "====================================\n"
+        "Select one option: "
     ))
 
     if option_focus == 1:

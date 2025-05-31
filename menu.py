@@ -3,7 +3,9 @@ from start_menu import start_menu
 from focus_menu import focus_menu
 
 def option_menu():
-    print("\nWelcome to the Eagle Focus App\n")
+    print("\n######################################")
+    print("            EAGLE FOCUS APP         ")
+    print("######################################\n")
     option = int(input(
         "   1: Start\n"
         "   2: Focus Settings\n"
