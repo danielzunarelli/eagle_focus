@@ -18,13 +18,13 @@ def start_menu():
                 formatted = time.strftime("%H:%M:%S", time.gmtime(duration))
                 print(f"{i}. {name} — Total: {formatted}")
             try:
-                selected_index = int(input("\nEnter the number of the Focus to start: ")) - 1
+                selected_index = int(input("\nEnter the number of the Focus or press any other number to go back: ")) - 1
                 if 0 <= selected_index < len(focus_list):
                     selected_focus = focus_list[selected_index][0]  # nome do focus
                     print(f"\nYou selected: {selected_focus}")
                     start_focus_timer(selected_focus)
                 else:
-                    print("Invalid selection.")
+                    print("\nReturning to the menu:")
             except ValueError:
                 print("Please enter a valid number.")
         else:
