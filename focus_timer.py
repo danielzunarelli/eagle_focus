@@ -2,6 +2,7 @@ import time
 import itertools
 import sys
 import threading
+from db import insert_focus_session
 
 spinner_running = True
 spinner_paused = False
@@ -9,13 +10,13 @@ spinner_paused = False
 def spinner():
     spinner_cycle = itertools.cycle(['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏'])
     while spinner_running:
-        sys.stdout.write("\033[s")              # Salva posição do cursor
-        sys.stdout.write("\033[1A\r")           # Sobe 1 linha e vai pro início
+        sys.stdout.write("\033[s")
+        sys.stdout.write("\033[1A\r")
         if not spinner_paused:
             sys.stdout.write(f"Focus is running {next(spinner_cycle)}   \n")
         else:
             sys.stdout.write("Focus is paused           \n")
-        sys.stdout.write("\033[u")              # Restaura posição do cursor
+        sys.stdout.write("\033[u")
         sys.stdout.flush()
         time.sleep(0.1)
 
@@ -61,8 +62,12 @@ def start_focus_timer(focus_name):
                 end_time = last_pause
             else:
                 end_time = time.time()
+
             total_focus_time = end_time - start_time - paused_time
-            print(f"\nFocus '{focus_name}' ended. Total time: {int(total_focus_time)} seconds.")
+            formatted_time = time.strftime("%H:%M:%S", time.gmtime(total_focus_time))
+            print(f"\nFocus '{focus_name}' ended. Total time: {formatted_time}.")
+
+            insert_focus_session(focus_name, int(total_focus_time))  # agora com timestamp
             break
 
         else:

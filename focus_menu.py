@@ -1,6 +1,9 @@
-from db import insert_focus, get_all_focus, delete_focus_by_id
+from db import insert_focus, get_all_focus_total_time, delete_focus_by_name
+import time
 
 def focus_menu():
+    from menu import option_menu
+
     print("\nFocus Menu\n")
     option_focus = int(input(
         "   1: Register a new Focus\n"
@@ -18,25 +21,30 @@ def focus_menu():
         return focus_menu()
 
     elif option_focus == 2:
-        focus_list = get_all_focus()
+        focus_list = get_all_focus_total_time()
         if focus_list:
             print("\nRegistered Focuses:")
-            for f in focus_list:
-                print(f"{f[0]}. {f[1]}")
+            for name, duration in focus_list:
+                formatted = time.strftime("%H:%M:%S", time.gmtime(duration))
+                print(f"{name} — Total: {formatted}")
         else:
             print("No focus registered yet.")
         return focus_menu()
 
     elif option_focus == 3:
-        focus_list = get_all_focus()
+        focus_list = get_all_focus_total_time()
         if focus_list:
             print("\nRegistered Focuses:")
-            for f in focus_list:
-                print(f"{f[0]}. {f[1]}")
+            for i, (name, duration) in enumerate(focus_list, 1):
+                formatted = time.strftime("%H:%M:%S", time.gmtime(duration))
+                print(f"{i}. {name} — Total: {formatted}")
             try:
-                focus_id = int(input("\nEnter the number of the Focus to delete: "))
-                delete_focus_by_id(focus_id)
-                print("Focus deleted successfully.")
+                index = int(input("\nEnter the number of the Focus to delete: ")) - 1
+                if 0 <= index < len(focus_list):
+                    delete_focus_by_name(focus_list[index][0])
+                    print("Focus deleted successfully.")
+                else:
+                    print("Invalid selection.")
             except ValueError:
                 print("Please enter a valid number.")
         else:
@@ -44,7 +52,6 @@ def focus_menu():
         return focus_menu()
 
     elif option_focus == 4:
-        from menu import option_menu 
         return option_menu()
 
     elif option_focus == 9:
