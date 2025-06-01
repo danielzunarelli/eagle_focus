@@ -65,3 +65,10 @@ def insert_focus_session(name, seconds):
     cursor.execute("INSERT INTO focus_sessions (focus_name, duration, timestamp) VALUES (?, ?, ?);", (name, seconds, timestamp))
     conn.commit()
     conn.close()
+
+def reset_focus_time(name):
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM focus_sessions WHERE focus_name = ?;", (name,))
+    conn.commit()
+    conn.close()
