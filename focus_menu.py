@@ -1,9 +1,10 @@
 # focus_menu.py
 from db import insert_focus, get_all_focus_total_time, delete_focus_by_name, reset_focus_time
-from menu import option_menu
 import time
 
 def focus_menu():
+    from menu import option_menu  # Evita importação circular
+
     print("\n===========  FOCUS MENU ===========")
     option_focus = int(input(
         "   1: Register a new Focus\n"
