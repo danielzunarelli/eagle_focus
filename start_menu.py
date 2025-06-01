@@ -21,7 +21,6 @@ def start_menu():
                 formatted = time.strftime("%H:%M:%S", time.gmtime(duration))
                 print(f"{i}. {name} — Total: {formatted}")
             print("====================================")
-            print("0. Back to Menu")
             try:
                 selected_index = int(input("\nEnter the number of the Focus or press any other number to go back: "))
                 if selected_index == 0:
