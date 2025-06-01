@@ -34,12 +34,6 @@ def connect():
     return sqlite3.connect("/Users/seu_usuario/data/eagle_focus.db")
 ```
 
-Caso deseje salvar na mesma pasta do projeto, basta usar:
-
-```python
-DB_NAME = "eagle_focus.db"
-```
-
 ---
 
 ## Estrutura do projeto
