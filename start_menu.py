@@ -1,9 +1,10 @@
+# start_menu.py
 from db import get_all_focus_total_time
 from focus_timer import start_focus_timer
 import time
 
 def start_menu():
-    print("\n===========  START MENU ===========")
+    print("\n=========== START MENU ===========")
     option_start = int(input(
         "   1: Select Focus\n"
         "   2: Back to Menu\n"
@@ -15,18 +16,24 @@ def start_menu():
     if option_start == 1:
         focus_list = get_all_focus_total_time()
         if focus_list:
-            print("\nList of Focus:")
+            print("\n=========== LIST OF FOCUS ===========")
             for i, (name, duration) in enumerate(focus_list, 1):
                 formatted = time.strftime("%H:%M:%S", time.gmtime(duration))
                 print(f"{i}. {name} — Total: {formatted}")
+            print("====================================")
+            print("0. Back to Menu")
             try:
-                selected_index = int(input("\nEnter the number of the Focus or press any other number to go back: ")) - 1
+                selected_index = int(input("\nEnter the number of the Focus or press any other number to go back: "))
+                if selected_index == 0:
+                    print("\nReturning to the menu:")
+                    return start_menu()
+                selected_index -= 1
                 if 0 <= selected_index < len(focus_list):
-                    selected_focus = focus_list[selected_index][0]  # nome do focus
+                    selected_focus = focus_list[selected_index][0]
                     print(f"\nYou selected: {selected_focus}")
                     start_focus_timer(selected_focus)
                 else:
-                    print("\nReturning to the menu:")
+                    print("Invalid selection.")
             except ValueError:
                 print("Please enter a valid number.")
         else:

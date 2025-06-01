@@ -5,6 +5,7 @@ def focus_menu():
     from menu import option_menu
 
 def focus_menu():
+    from menu import option_menu
     print("\n===========  FOCUS MENU ===========")
     option_focus = int(input(
         "   1: Register a new Focus\n"
