@@ -65,6 +65,13 @@ alias eaglefocus="python3 /caminho/para/o/main.py"
 
 ---
 
+## Prints do App:
+
+<img width="209" alt="Screenshot 2025-05-31 at 21 56 53" src="https://github.com/user-attachments/assets/9aecb043-b430-4040-a07f-d9819b0c3871" />
+<img width="254" alt="Screenshot 2025-05-31 at 21 56 31" src="https://github.com/user-attachments/assets/b8680d79-bc1c-4874-8ea4-f3a06b257934" />
+
+---
+
 ## Próximas atualizações
 
 - Dashboard de sessões (tempo total por foco)
