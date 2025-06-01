@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 
 def connect():
-    return sqlite3.connect("eagle_focus.db")
+    return sqlite3.connect("/Users/danielzunarelli/data/eagle_focus.db")
 
 def create_tables():
     conn = connect()
